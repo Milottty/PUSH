@@ -9,6 +9,10 @@
 
     $users = $getUsers->fetchAll();
 
+    if(!isset($_SESSION['username'])){
+        header("Location: login.php");
+    }
+
     foreach ($users as $user) {
     }
     ?>
@@ -63,6 +67,14 @@
                         Customers
                     </a>
                 </li>
+                <li>
+                    <a href="logout.php" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16">
+                            <use xlink:href="#people-circle"></use>
+                        </svg>
+                        Logout
+                    </a>
+                </li>
             </ul>
             <hr>
             <div class="dropdown">
@@ -82,6 +94,8 @@
             </div>
         </div>
         <div class="p-5">
+
+            <h1>Wellcome, <?= $_SESSION['username'] ?></h1>
             <table class="mb-5 table table-bordered">
                 <thead>
                     <th>ID</th>
@@ -110,7 +124,7 @@
                     ?>
                 </tbody>
             </table>
-            <h2><a href="index.php">Add new users</a></h2>
+            <h2><a href="register.php">Add new users</a></h2>
         </div>
     </div>
 

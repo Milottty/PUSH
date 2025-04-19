@@ -18,6 +18,7 @@ if(isset($_POST['submit'])){
             $data=$tempSQL->fetch();
             
             if(password_verify($password, $data['password'])){
+                $_SESSION['username'] = $data['username'];
                 header("Location: dashboard.php");
             } else{
                 echo "Password is incorrect!";
